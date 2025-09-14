@@ -1,19 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-interface IUser {
-  id: string;
-  avatar: string;
-  name: string;
-}
+import { IUser } from './user.model';
+import { Card } from "../card/card";
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [],
+  imports: [Card],
   templateUrl: './user.html',
   styleUrl: './user.scss',
 })
 export class User {
   @Input({ required: true }) user!: IUser;
+  @Input({ required: true }) selected!: boolean;
   @Output() select = new EventEmitter<string>();
   @Output() userName = new EventEmitter<string>();
   // output does not create a signal and can be used in replace of @Output

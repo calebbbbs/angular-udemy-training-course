@@ -1,9 +1,11 @@
-export const DUMMY_TASKS = [
+import { ITask } from "./components/tasks/task/task.model";
+
+export const DUMMY_TASKS: ITask[] = [
   {
     id: 1,
     description: 'Cut grass',
     userId: 'u1',
-    time: new Date(2025, 10, 2, 1,30).toLocaleTimeString().toString(),
+    time: new Date().toDateString(),
     summary: "Cut the grass before the weekend",
     completed: true,
   },
@@ -11,7 +13,7 @@ export const DUMMY_TASKS = [
     id: 2,
     description: 'Study',
     userId: 'u2',
-    time: new Date(2025, 10, 2, 1,30).toLocaleTimeString().toString(),
+    time: new Date().toDateString(),
     summary: "Study before you watch tv",
     completed: false,
   },
@@ -19,7 +21,7 @@ export const DUMMY_TASKS = [
     id: 3,
     description: 'Take a bath',
     userId: 'u3',
-    time: new Date(2025, 10, 2, 1,30).toLocaleTimeString().toString(),
+    time: new Date().toDateString(),
     summary: "Take a bath before bed time",
     completed: true,
   },
@@ -27,7 +29,7 @@ export const DUMMY_TASKS = [
     id: 4,
     description: 'Do dishes',
     userId: 'u4',
-    time: new Date(2025, 10, 2, 1,30).toLocaleTimeString().toString(),
+    time: new Date().toDateString(),
     summary: "Do the dishes before you watch tv",
     completed: false,
   },
@@ -35,7 +37,7 @@ export const DUMMY_TASKS = [
     id: 5,
     description: 'Cook Dinner',
     userId: 'u5',
-    time: new Date(2025, 10, 2, 1,30).toLocaleTimeString().toString(),
+    time: new Date().toDateString(),
     summary: "TCook Dinner so we can eat already",
     completed: false,
   },
@@ -43,7 +45,7 @@ export const DUMMY_TASKS = [
     id: 6,
     description: 'Angular Studying',
     userId: 'u6',
-    time: new Date(2025, 10, 2, 1,30).toLocaleTimeString().toString(),
+    time: new Date().toDateString(),
     summary: "Master Angular for work buddy",
     completed: true,
   },

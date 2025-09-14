@@ -1,15 +1,21 @@
+@if(isAddingTask){
+<app-new-task (close)="onCloseNewTask()" [userId]="userId" />
+}
+
 <section id="tasks">
   <header>
     <h2>{{ name }}</h2>
     <menu>
-      <button>Add Task</button>
+      <button (click)="onStartAddNewTask()">Add Task</button>
     </menu>
   </header>
   <ul>
-    @for(task of selectedUserTasks; track task.id){
+    @if(!selectedUserTasks){
+    <p>No Tasks To Complete</p>
+    } @for(task of selectedUserTasks; track task.id) { @if(!task.completed) {
     <li id="task-{{ task.id }}">
       <app-task [task]="task" />
     </li>
-    }
+    } }
   </ul>
 </section>

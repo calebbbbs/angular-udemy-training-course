@@ -1,25 +1,34 @@
 import { Component, Input, Output } from '@angular/core';
 import { DUMMY_TASKS } from '../../dummy-tasks';
-import { Task, ITask } from './task/task';
-
-interface ITaskList {
-  taskList: ITask[];
-}
+import { Task } from './task/task';
+import { NewTask } from './new-task/new-task';
+import { INewTaskData, ITask } from './task/task.model';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [Task],
+  imports: [Task, NewTask],
   templateUrl: './tasks.html',
   styleUrl: './tasks.scss',
 })
 export class Tasks {
-  dummyTasks = DUMMY_TASKS;
+  isAddingTask = false;
+
   @Input() name!: string;
   @Input() userId!: string;
-  @Input() taskList!: ITaskList[];
+
+  constructor(private _tasksService: TasksService) {}
 
   get selectedUserTasks() {
-    return this.dummyTasks.filter(d => d.userId === this.userId);
+    return this._tasksService.getUserTasks(this.userId);
+  }
+
+  onStartAddNewTask() {
+    this.isAddingTask = true;
+  }
+
+  onCloseNewTask() {
+    this.isAddingTask = false;
   }
 }
