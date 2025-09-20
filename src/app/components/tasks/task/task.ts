@@ -6,13 +6,13 @@ import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-task',
+  standalone: true,
   imports: [Card, DatePipe],
   templateUrl: './task.html',
   styleUrl: './task.scss',
 })
 export class Task {
   @Input({ required: true }) task!: ITask;
-
   private _tasksService = inject(TasksService);
 
   onCompletedTask(): void {

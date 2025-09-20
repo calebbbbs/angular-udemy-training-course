@@ -1,10 +1,11 @@
-import { Component, EventEmitter, inject, Input, Output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { INewTaskData } from '../task/task.model';
 import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-new-task',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './new-task.html',
   styleUrl: './new-task.scss',
@@ -16,10 +17,6 @@ export class NewTask {
 
   private _tasksService = inject(TasksService);
 
-  // all you need to do with signals when using [(ngModel] directive for two way binding
-  // enteredTitle = signal('');
-  // summary = signal('');
-  // enteredDate = signal('');
   @Input({ required: true }) userId!: string;
   @Output() close = new EventEmitter<void>();
   @Output() addNewTask = new EventEmitter<INewTaskData>();
@@ -27,12 +24,6 @@ export class NewTask {
   onCancelNewTask(): void {
     this.close.emit();
   }
-
-  // @Output() addNewTask = new EventEmitter<void>();
-  // onSubmit() {
-  //   this.addNewTask.emit();
-  //   this.cancel.emit();
-  // }
 
   onSubmit() {
     this._tasksService.addNewTask(
